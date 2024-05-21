@@ -12,5 +12,5 @@ module.exports = {
         const result = await pool.query('SELECT * FROM rol WHERE id_rol = $1', [id]);
         return result.rows[0];
     },
-
+ 
 };
