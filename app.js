@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 
 // Rutas
 app.use('/api', facturaRoutes);
+// app.use('/api', parqueaderoRoutes);
 
 // Puerto
 const PORT = process.env.PORT || 3000;

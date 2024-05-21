@@ -11,7 +11,6 @@ exports.createFactura = async (req, res) => {
 
 exports.getFacturas = async (req, res) => {
     try {
-        console.log("holito")
         const facturas = await Factura.findAll();
         res.status(200).json(facturas);
     } catch (error) {
@@ -21,8 +20,6 @@ exports.getFacturas = async (req, res) => {
 
 exports.getFactura = async (req, res) => {
     try {            
-        console.log("entró")
-
         const factura = await Factura.findById(req.query.id);
         if (!factura) {
             return res.status(404).json({ message: 'Factura not found' });
@@ -35,7 +32,7 @@ exports.getFactura = async (req, res) => {
 
 exports.updateFactura = async (req, res) => {
     try {
-        const factura = await Factura.update(req.params.id, req.body);
+        const factura = await Factura.update(req.query.id, req.body);
         if (!factura) {
             return res.status(404).json({ message: 'factura not found' });
         }
@@ -47,7 +44,7 @@ exports.updateFactura = async (req, res) => {
 
 exports.deleteFactura = async (req, res) => {
     try {
-        const factura = await Factura.delete(req.params.id);
+        const factura = await Factura.delete(req.query.id);
         if (!factura) {
             return res.status(404).json({ message: 'factura not found' });
         }
