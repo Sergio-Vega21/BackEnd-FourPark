@@ -66,6 +66,3 @@ const Inicio = require('../models/inicioModel');
             res.status(400).json({ error: error.message });
         }
     };
-
-
-module.exports = UserController;

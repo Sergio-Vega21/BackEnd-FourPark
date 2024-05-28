@@ -12,7 +12,7 @@ module.exports = {
     },
 
     async findAll() {
-        const result = await pool.query('SELECT * FROM ususario');
+        const result = await pool.query('SELECT * FROM usuario');
         return result.rows;
     },
 
@@ -22,7 +22,7 @@ module.exports = {
     },
    
 
-    async update(Correo, Usuario ) {
+    async update(correo, Usuario ) {
         const {Correo, ID_ROL, NOMBRE, APELLIDO, CONTRASENA} = Usuario;
         const result = await pool.query(
             'UPDATE Usuario SET correo_electronico = $1, id_rol = $2, nombre = $4, Apellido = $5, contrasena = $6 WHERE correo_electronico = $3 RETURNING *',

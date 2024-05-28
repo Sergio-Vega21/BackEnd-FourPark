@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const facturaRoutes = require('./src/routes/facturaRoutes');
 const parqueaderoRoutes = require('./src/routes/parqueaderoRoutes'); 
 const rolRoutes = require('./src/routes/rolRoutes'); 
+const inicioRoutes = require('./src/routes/inicioRoutes'); 
+
 
 
 const app = express();
@@ -14,6 +16,8 @@ app.use(bodyParser.json());
 app.use('/api', facturaRoutes);
 app.use('/api', parqueaderoRoutes);
 app.use('/api', rolRoutes);
+app.use('/api', inicioRoutes);
+
 
 
 // Puerto
