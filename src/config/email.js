@@ -12,7 +12,6 @@ class EmailService {
       clientId: process.env.EMAIL_CLIENT,
       clientSecret: process.env.EMAIL_CLIENT_SECRET,
     };
-    console.log(auth);
     this.transporter = nodemailer.createTransport({
       service: "gmail",
       auth,
