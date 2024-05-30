@@ -7,6 +7,7 @@ const usuarioRoutes = require("./src/routes/usuarioRoutes");
 const cors = require("cors");
 const tarjetaRoutes = require("./src/routes/tarjetaRoutes");
 const loginRoutes = require("./src/routes/loginRoutes");
+const reportRoutes = require('./src/routes/reportRoutes');
 const path = require('path');
 
 const app = express(); // Inicializamos express aquí
