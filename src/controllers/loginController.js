@@ -1,4 +1,4 @@
-const Login = require("../models/loginModel");
+const Login = require('../models/loginModel');
 
 exports.loginCliente = async (req, res) => {
   try {
@@ -17,8 +17,15 @@ exports.loginCliente = async (req, res) => {
 
     const rol = await Login.findrol(correo_electronico);
 
-    if (rol == "1") {
-      res.status(200).json({ message: "Sesion Iniciada como gerente" });
+        if (rol =='1'){
+            res.status(200).json({ message: 'Sesion Iniciada como gerente' });
+        }
+
+        // Si las contraseñas coinciden, iniciar sesión
+        res.status(200).json({ message: 'Sesion Iniciada como cliente' });
+    } catch (error) {
+
+        res.status(400).json({ error: error.message });
     }
 
     // Si las contraseñas coinciden, iniciar sesión

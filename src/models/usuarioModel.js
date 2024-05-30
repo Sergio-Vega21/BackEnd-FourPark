@@ -38,5 +38,5 @@ module.exports = {
       [id, id_rol, nombre, apellido, contrasena]
     );
     return result.rows[0];
-  },
+  }
 };
