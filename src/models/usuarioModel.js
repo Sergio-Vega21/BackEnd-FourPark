@@ -1,6 +1,6 @@
 const { v4 } = require("uuid");
 const pool = require("../config/database");
-const cypher = require("crypto-js/md5");
+const md5 = require("crypto-js/md5");
 
 // Métodos existentes
 
@@ -8,15 +8,13 @@ module.exports = {
   async create(usuario) {
     const { correo_electronico, id_rol, nombre, apellido } = usuario;
     const contrasena = v4();
-
-    console.log(contrasena);
+    const hash = md5(contrasena, "hex").toString();
     const result = await pool.query(
       "INSERT INTO usuario ( correo_electronico, id_rol, nombre, apellido, contrasena) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [correo_electronico, id_rol, nombre, apellido, contrasena]
+      [correo_electronico, id_rol, nombre, apellido, hash]
     );
     return result.rows[0];
   },
-
   async findAll() {
     const result = await pool.query("SELECT * FROM usuario");
     return result.rows;
@@ -38,5 +36,5 @@ module.exports = {
       [id, id_rol, nombre, apellido, contrasena]
     );
     return result.rows[0];
-  }
+  },
 };
