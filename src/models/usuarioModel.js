@@ -8,6 +8,7 @@ module.exports = {
   async create(usuario) {
     const { correo_electronico, id_rol, nombre, apellido } = usuario;
     const contrasena = v4();
+    console.log(contrasena);
     const hash = md5(contrasena, "hex").toString();
     const result = await pool.query(
       "INSERT INTO usuario ( correo_electronico, id_rol, nombre, apellido, contrasena) VALUES ($1, $2, $3, $4, $5) RETURNING *",
