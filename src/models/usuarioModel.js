@@ -15,8 +15,9 @@ module.exports = {
         return result.rows;
     },
 
-    async findById(id) {
-        const result = await pool.query('SELECT * FROM usuario WHERE correo_electronico = $1', [id]);
+    async findById(usuario) {
+        const {correo_electronico} = usuario;
+        const result = await pool.query('SELECT * FROM usuario WHERE correo_electronico = $1', [correo_electronico]);
         return result.rows[0];
     },
 
@@ -30,7 +31,8 @@ module.exports = {
     },
 
     async delete(id) {
-        const result = await pool.query('DELETE FROM usuario WHERE correo_electronico  = $1 RETURNING *', [id]);
+        const {correo_electronico} = id;
+        const result = await pool.query('DELETE FROM usuario WHERE correo_electronico  = $1 RETURNING *', [correo_electronico]);
         return result.rows[0];
     }
 };

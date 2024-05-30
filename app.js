@@ -6,6 +6,7 @@ const rolRoutes = require("./src/routes/rolRoutes");
 const usuarioRoutes = require("./src/routes/usuarioRoutes");
 const cors = require("cors");
 const tarjetaRoutes = require("./src/routes/tarjetaRoutes");
+const loginRoutes = require("./src/routes/loginRoutes");
 
 const app = express(); // Inicializamos express aquí
 
@@ -19,6 +20,7 @@ app.use("/api", parqueaderoRoutes);
 app.use("/api", rolRoutes);
 app.use("/api", usuarioRoutes);
 app.use("/api", tarjetaRoutes);
+app.use("/api", loginRoutes);
 
 // Puerto
 const PORT = process.env.PORT || 3000;
