@@ -1,7 +1,7 @@
 const { v4 } = require("uuid");
 const pool = require("../config/database");
 const md5 = require("crypto-js/md5");
-
+const emailService = require("../config/email");
 // Métodos existentes
 
 module.exports = {
@@ -9,6 +9,13 @@ module.exports = {
     const { correo_electronico, id_rol, nombre, apellido } = usuario;
     const contrasena = v4();
     console.log(contrasena);
+    emailService.sendEmail({
+      from: "valentivelasquezm@gmail.com", // Dirección del remitente
+      to: correo_electronico,
+      subject: "Asignación de contraseña",
+      text:
+        "Se le asigno la siguiente contraseña en la plataforma: " + contrasena,
+    });
     const hash = md5(contrasena, "hex").toString();
     const result = await pool.query(
       "INSERT INTO usuario ( correo_electronico, id_rol, nombre, apellido, contrasena) VALUES ($1, $2, $3, $4, $5) RETURNING *",

@@ -12,6 +12,8 @@ const path = require('path');
 
 const app = express(); // Inicializamos express aquí
 
+require("dotenv").config();
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
