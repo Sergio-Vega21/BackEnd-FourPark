@@ -20,9 +20,9 @@ exports.loginCliente = async (req, res) => {
     if (rol == "1") {
       res.status(200).json({ message: "Sesion Iniciada como gerente" });
     }
-
+    const { contrasena: trash, ...data } = usuario;
     // Si las contraseñas coinciden, iniciar sesión
-    res.status(200).json({ message: "Sesion Iniciada como cliente" });
+    res.status(200).json(data);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
