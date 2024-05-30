@@ -44,12 +44,12 @@ exports.updateParqueadero = async (req, res) => {
 
 exports.deleteParqueadero = async (req, res) => {
   try {
-    const parqueadero = await Parqueadero.delete(req.params.id);
-    if (!parqueadero) {
-      return res.status(404).json({ message: "Parqueadero not found" });
-    }
-    res.status(200).json({ message: "Parqueadero deleted" });
+      const parqueadero = await Parqueadero.delete(req.query.id);
+      if (!parqueadero) {
+          return res.status(404).json({ message: 'parqueadero not found' });
+      }
+      res.status(200).json({ message: 'parqueadero deleted' });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+      res.status(400).json({ error: error.message });
   }
 };

@@ -34,11 +34,9 @@ module.exports = {
 
   async findAll() {
     const result = await pool.query(`
-    SELECT p.*, u.direccion, d.hora_apertura, d.hora_cierre
-    FROM parqueadero p
-    JOIN ubicacion u ON p.idciudad = u.idciudad
-    JOIN disponibilidad d ON p.id_disponibilidad = d.id_disponibilidad;
-
+    select p.id_parqueadero, p.nombre,u.ciudad, u.direccion, p.cantidad_espacios,t.desc_tipo, d.hora_apertura, d.hora_cierre, p.precio_minuto_moto,p.precio_minuto_auto , p.tarifap_moto,p.tarifap_auto 
+    from parqueadero p, ubicacion u , tipo t, disponibilidad d  
+    where p.idciudad=u.idciudad and p.id_tipo=t.id_tipo and p.id_disponibilidad=d.id_disponibilidad;
     `);
     return result.rows;
   },
@@ -90,7 +88,7 @@ module.exports = {
     const result = await pool.query(
       "DELETE FROM parqueadero WHERE id_parqueadero = $1 RETURNING *",
       [id]
-    );
-    return result.rows[0];
-  },
-};
+      );
+      return result.rows[0];
+    },
+  };
