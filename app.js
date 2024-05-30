@@ -1,10 +1,10 @@
 const express = require("express");
-const cors = require("cors");
 const bodyParser = require("body-parser");
 const facturaRoutes = require("./src/routes/facturaRoutes");
 const parqueaderoRoutes = require("./src/routes/parqueaderoRoutes");
 const rolRoutes = require("./src/routes/rolRoutes");
-const inicioRoutes = require("./src/routes/inicioRoutes");
+const usuarioRoutes = require("./src/routes/usuarioRoutes");
+const cors = require("cors");
 
 const app = express(); // Inicializamos express aquí
 
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use("/api", facturaRoutes);
 app.use("/api", parqueaderoRoutes);
 app.use("/api", rolRoutes);
-app.use("/api", inicioRoutes);
+app.use("/api", usuarioRoutes);
 
 // Puerto
 const PORT = process.env.PORT || 3000;
