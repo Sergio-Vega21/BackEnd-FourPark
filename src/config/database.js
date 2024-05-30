@@ -5,11 +5,7 @@ const pool = new Pool({
   host: "monorail.proxy.rlwy.net",
   database: "railway",
   password: "QrCBkAfIeeMqJtHSReoKrCGDLQXQuVnv",
-<<<<<<< HEAD
   port:56134,
-=======
-  port: 56134,
->>>>>>> 70c0ea7432c0a62ac6f2e6696e864a7742747e8c
 });
 
 pool.on("connect", (client) => {
