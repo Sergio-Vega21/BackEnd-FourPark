@@ -1,4 +1,3 @@
-const SHA1 = require('crypto-js/sha1');
 const Login = require('../models/loginModel');
 
 exports.loginCliente = async (req, res) => {
@@ -25,7 +24,6 @@ exports.loginCliente = async (req, res) => {
         // Si las contraseñas coinciden, iniciar sesión
         res.status(200).json({ message: 'Sesion Iniciada como cliente' });
     } catch (error) {
-
 
         res.status(400).json({ error: error.message });
     }
