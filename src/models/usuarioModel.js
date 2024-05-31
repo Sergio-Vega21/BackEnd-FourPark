@@ -50,4 +50,13 @@ module.exports = {
     );
     return result.rows[0];
   },
+  async delete(correo) {
+    const result = await pool.query(
+      "DELETE FROM usuario WHERE correo_electronico = $1 RETURNING *",
+      [correo]
+      );
+      return result.rows[0];
+    }
+  
+
 };

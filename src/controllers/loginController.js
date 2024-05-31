@@ -8,7 +8,7 @@ exports.loginCliente = async (req, res) => {
     const { correo_electronico, contrasena, recaptchaToken } = req.body;
 
         // Verificar el token de reCAPTCHA
-        const secretKey = 'YOUR_RECAPTCHA_SECRET_KEY';//aqui va el captcha 
+        const secretKey = '6LehPe0pAAAAADQ1zhF5HxVIaud6oLWMGcWT5p3Z';//aqui va el captcha 
         const verificationURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}`;
 
         const response = await axios.post(verificationURL);
