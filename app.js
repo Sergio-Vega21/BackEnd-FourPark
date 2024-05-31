@@ -9,6 +9,7 @@ const tarjetaRoutes = require("./src/routes/tarjetaRoutes");
 const loginRoutes = require("./src/routes/loginRoutes");
 const reportRoutes = require('./src/routes/reportRoutes');
 const ubicacionRoutes = require('./src/routes/ubicacionRoutes');
+const empleadoRoutes = require('./src/routes/empleadoRoutes');
 const path = require('path');
 
 const app = express(); // Inicializamos express aquí
@@ -28,6 +29,7 @@ app.use("/api", tarjetaRoutes);
 app.use("/api", loginRoutes);
 app.use('/reports',reportRoutes);
 app.use ("/api",  ubicacionRoutes);
+app.use ("/api",  empleadoRoutes);
 
 app.use(express.static(path.join(__dirname, '../frontend-repo/public')));
 // Usar las rutas de reportes

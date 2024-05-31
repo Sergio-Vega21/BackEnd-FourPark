@@ -53,3 +53,14 @@ exports.deleteParqueadero = async (req, res) => {
       res.status(400).json({ error: error.message });
   }
 };
+
+exports.filtrarParqueadero = async (req, res) => {
+  try {
+      const parqueadero = await Parqueadero.filtro(req.query.id);
+      if (!parqueadero) {
+          return res.status(404).json({ message: 'parqueadero not found' });
+      }
+  } catch (error) {
+      res.status(400).json({ error: error.message });
+  }
+};
