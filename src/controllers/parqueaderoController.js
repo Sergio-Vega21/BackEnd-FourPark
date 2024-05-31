@@ -56,7 +56,7 @@ exports.deleteParqueadero = async (req, res) => {
 
 exports.filtrarParqueadero = async (req, res) => {
   try {
-      const parqueadero = await Parqueadero.filtro(req.query.id);
+      const parqueadero = await Parqueadero.filtro(req.query.city);
       if (!parqueadero) {
           return res.status(404).json({ message: 'parqueadero not found' });
       }

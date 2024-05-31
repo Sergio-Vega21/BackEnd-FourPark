@@ -92,11 +92,13 @@ module.exports = {
       return result.rows[0];
     },
 
-    async filtro(ciudad){
-      const result = await pool.query(`
-      select p.id_parqueadero, p.nombre,u.ciudad, u.direccion, p.cantidad_espacios,t.desc_tipo, d.hora_apertura, d.hora_cierre, p.precio_minuto_moto,p.precio_minuto_auto , p.tarifap_moto,p.tarifap_auto 
-      from parqueadero p, ubicacion u , tipo t, disponibilidad d  
-      where p.idciudad=u.idciudad and p.id_tipo=t.id_tipo and p.id_disponibilidad=d.id_disponibilidad and u.ciudad=$1
-      `,[ciudad]);
+    async filtro(city){
+      const result = await pool.query(
+        `select p.id_parqueadero, p.nombre,u.ciudad, u.direccion, p.cantidad_espacios,t.desc_tipo, d.hora_apertura, d.hora_cierre, p.precio_minuto_moto,p.precio_minuto_auto , p.tarifap_moto,p.tarifap_auto 
+        from parqueadero p, ubicacion u , tipo t, disponibilidad d  
+        where p.idciudad=u.idciudad and p.id_tipo=t.id_tipo and p.id_disponibilidad=d.id_disponibilidad and u.ciudad=$1`,
+        [city]);
+      return result.rows;
     }
+
   };
