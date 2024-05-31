@@ -40,7 +40,7 @@ exports.getUsuarios = async (req, res) => {
 
 exports.getUsuario = async (req, res) => {
   try {
-    const usuario = await Usuario.findById(req.query.id);
+    const usuario = await Usuario.findById(req.body);
     if (!usuario) {
       return res.status(404).json({ message: "usuario not found" });
     }
