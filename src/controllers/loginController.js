@@ -1,20 +1,21 @@
 const Login = require("../models/loginModel");
 const md5 = require("crypto-js/md5");
-const axios = require('axios');
+const axios = require("axios");
 
 exports.loginCliente = async (req, res) => {
   try {
-    
     const { correo_electronico, contrasena, recaptchaToken } = req.body;
 
-        // Verificar el token de reCAPTCHA
-        const secretKey = '6LehPe0pAAAAADQ1zhF5HxVIaud6oLWMGcWT5p3Z';//aqui va el captcha 
-        const verificationURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}`;
+    // Verificar el token de reCAPTCHA
+    const secretKey = "6LehPe0pAAAAADQ1zhF5HxVIaud6oLWMGcWT5p3Z"; //aqui va el captcha
+    const verificationURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}`;
 
-        const response = await axios.post(verificationURL);
-        if (!response.data.success) {
-            return res.status(400).json({ message: 'Error de verificación de reCAPTCHA' });
-        }
+    const response = await axios.post(verificationURL);
+    if (!response.data.success) {
+      return res
+        .status(400)
+        .json({ message: "Error de verificación de reCAPTCHA" });
+    }
 
     // Buscar el usuario en la base de datos usando el correo electrónico
     const usuario = await Login.findByCorreo(correo_electronico);
